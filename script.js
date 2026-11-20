@@ -4,6 +4,13 @@ const projectsData = {
     title: "🚦 URBAN — City OS & Digital Twin",
     badge: "Highload Backend / CyberSec / Telemetry",
     tags: ["FastAPI", "WebSockets", "Docker", "Auto-Rollback", "PostgreSQL"],
+    images: [
+      "assets/projects/urban_1.jpg",
+      "assets/projects/urban_2.jpg",
+      "assets/projects/urban_3.jpg",
+      "assets/projects/urban_4.jpg",
+      "assets/projects/urban_5.jpg"
+    ],
     desc: "Платформа умного города для мониторинга критической инфраструктуры в реальном времени. Включает 3D-цифровой двойник объектов, распределённый сбор данных с тысяч датчиков и контур отказоустойчивости.",
     features: [
       "Строгая изоляция сетевых контуров безопасности (Zero Trust сегментация сенсоров)",
@@ -22,6 +29,10 @@ const projectsData = {
     title: "💊 MedCourse — Telegram Platform",
     badge: "E-Health / End-to-End Encryption / FinOps",
     tags: ["Telegram Bot API", "FastAPI", "AES-256", "Outbox Pattern", "2000+ Tests"],
+    images: [
+      "assets/projects/medcourse_1.jpg",
+      "assets/projects/medcourse_2.jpg"
+    ],
     desc: "Медицинская Telegram-платформа для контроля курсов приёма препаратов, взаимодействия пациентов с клиниками и безопасного хранения истории болезни.",
     features: [
       "Field-Level шифрование персональных и медицинских данных алгоритмом AES-256",
@@ -39,6 +50,14 @@ async with db.transaction():
     title: "👻 PHANTOM WALLET — FinTech Mini App",
     badge: "Telegram Mini App / High Concurrency / Anti-Race",
     tags: ["Telegram WebApp", "FastAPI", "SQLite WAL", "Pydantic v2", "1180 Tests"],
+    images: [
+      "assets/projects/wallet_1.jpg",
+      "assets/projects/wallet_2.jpg",
+      "assets/projects/wallet_3.jpg",
+      "assets/projects/wallet_4.jpg",
+      "assets/projects/wallet_5.jpg",
+      "assets/projects/wallet_6.jpg"
+    ],
     desc: "Финтех Telegram Mini App с интегрированным AI-питомцем и геймификацией сбережений. Разработан с фокусом на моментальный отклик и абсолютную финансовую целостность.",
     features: [
       "Защита от race conditions (Double Spending Protection) через строгие блокировки строк баланса",
@@ -55,6 +74,11 @@ assert hmac.compare_digest(data_check, received_hash)  # Zero spoofing`
     title: "🎬 Nova Cinema — Seat Reservation Engine",
     badge: "Telegram Mini App / Real-time Concurrency",
     tags: ["Telegram Mini App", "FastAPI", "Real-Time Locks", "AsyncIO", "SQLite"],
+    images: [
+      "assets/projects/cinema_1.jpg",
+      "assets/projects/cinema_2.jpg",
+      "assets/projects/cinema_3.jpg"
+    ],
     desc: "Сервис бронирования билетов в кинотеатры прямо в интерфейсе Telegram. Интерактивная карта зрительного зала и моментальное оформление заказов.",
     features: [
       "Anti-Double-Booking механизм: временная блокировка выбранных кресел (Seat Lock TTL) с автоосвобождением",
@@ -72,6 +96,13 @@ async def lock_seat(hall_id, seat_id, user_id, ttl_seconds=600):
     title: "🛍 METTA_V2 — E-Commerce Monorepo",
     badge: "Fullstack Architecture / Next.js / Prisma",
     tags: ["Next.js 14 App Router", "TypeScript", "Prisma ORM", "PostgreSQL", "RBAC"],
+    images: [
+      "assets/projects/metta_1.jpg",
+      "assets/projects/metta_2.jpg",
+      "assets/projects/metta_3.jpg",
+      "assets/projects/metta_4.jpg",
+      "assets/projects/metta_5.jpg"
+    ],
     desc: "Современный масштабируемый интернет-магазин электроники, организованный по принципу чистого модульного монорепозитория (клиентская витрина + защищённая админка).",
     features: [
       "Строгое разделение прав доступа (RBAC): гранулярные роли администраторов, менеджеров и клиентов",
@@ -119,6 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Switch Main Image in Modal Gallery
+function changeModalImg(src, thumbElem) {
+  const mainImg = document.getElementById("modalMainImg");
+  if (mainImg) {
+    mainImg.src = src;
+  }
+  document.querySelectorAll(".modal-thumb").forEach(t => t.classList.remove("active"));
+  if (thumbElem) {
+    thumbElem.classList.add("active");
+  }
+}
+
 // Modal Logic
 function openModal(projectId) {
   const data = projectsData[projectId];
@@ -130,11 +173,33 @@ function openModal(projectId) {
   const tagsHtml = data.tags.map(t => `<span class="tag" style="font-size: 0.8rem; padding: 4px 10px;">${t}</span>`).join(" ");
   const featuresHtml = data.features.map(f => `<li style="margin-bottom: 8px; color: #c9d1d9;">${f}</li>`).join("");
 
+  // Gallery HTML
+  let galleryHtml = "";
+  if (data.images && data.images.length > 0) {
+    const thumbsHtml = data.images.map((img, idx) => `
+      <img src="${img}" class="modal-thumb ${idx === 0 ? 'active' : ''}" onclick="changeModalImg('${img}', this)" alt="Screenshot ${idx + 1}" loading="lazy">
+    `).join("");
+
+    galleryHtml = `
+      <div class="modal-gallery">
+        <div class="modal-main-img-wrap">
+          <img id="modalMainImg" src="${data.images[0]}" class="modal-main-img" alt="${data.title}">
+        </div>
+        <div class="modal-thumbs">
+          ${thumbsHtml}
+        </div>
+      </div>
+    `;
+  }
+
   modalContent.innerHTML = `
     <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">
       ${data.badge}
     </div>
     <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">${data.title}</h2>
+    
+    ${galleryHtml}
+
     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
       ${tagsHtml}
     </div>
@@ -189,3 +254,7 @@ function escapeHtml(string) {
   };
   return String(string).replace(/[&<>"'\/]/g, s => entityMap[s]);
 }
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.changeModalImg = changeModalImg;

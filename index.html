@@ -94,18 +94,11 @@
 
         <!-- 1. URBAN -->
         <article class="project-card" data-category="backend">
-          <div class="card-visual visual-urban">
-            <div class="visual-badge">City OS & Digital Twin</div>
-            <div class="visual-mockup">
-              <div class="mockup-header">
-                <span class="pulse-green"></span>
-                <span>TELEMETRY_STREAM // ACTIVE</span>
-              </div>
-              <div class="mockup-code">
-                <code>&gt; SENSORS: 4,820 connected</code><br>
-                <code>&gt; FAILOVER: AUTO_ROLLBACK_ARMED</code><br>
-                <code>&gt; LATENCY: 2.4ms (p99)</code>
-              </div>
+          <div class="card-visual" onclick="openModal('urban')">
+            <img src="assets/projects/urban_1.jpg" alt="URBAN City OS" class="card-screenshot-img" loading="lazy">
+            <div class="card-screenshot-overlay">
+              <span class="visual-badge">City OS & Digital Twin</span>
+              <span class="screenshot-count-badge">📷 5 скриншотов</span>
             </div>
           </div>
           <div class="card-content">
@@ -120,7 +113,7 @@
               Платформа умного города с цифровым 3D-двойником инфраструктуры. Высоконагруженный контур сбора телеметрии сенсоров, строгая изоляция сетевых контуров безопасности и автоматические откаты при аномалиях.
             </p>
             <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('urban')">Детали архитектуры →</button>
+              <button class="btn-inspect" onclick="openModal('urban')">Галерея и архитектура →</button>
               <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               </a>
@@ -130,18 +123,11 @@
 
         <!-- 2. MedCourse -->
         <article class="project-card" data-category="backend telegram">
-          <div class="card-visual visual-med">
-            <div class="visual-badge">E-Health & FinOps</div>
-            <div class="visual-mockup">
-              <div class="mockup-header">
-                <span class="pulse-cyan"></span>
-                <span>AES256_ENCRYPTED_STORAGE</span>
-              </div>
-              <div class="mockup-code">
-                <code>&gt; OUTBOX: GUARANTEED_DELIVERY</code><br>
-                <code>&gt; TEST_SUITE: 2,000+ passed</code><br>
-                <code>&gt; DATA_COMPLIANCE: STRICT_HIPAA_GRADE</code>
-              </div>
+          <div class="card-visual" onclick="openModal('medcourse')">
+            <img src="assets/projects/medcourse_1.jpg" alt="MedCourse Platform" class="card-screenshot-img" loading="lazy">
+            <div class="card-screenshot-overlay">
+              <span class="visual-badge">E-Health & FinOps</span>
+              <span class="screenshot-count-badge">📷 2 скриншота</span>
             </div>
           </div>
           <div class="card-content">
@@ -156,7 +142,7 @@
               Telegram-экосистема медицинского сопровождения и курсового приёма препаратов. Полное шифрование чувствительных персональных данных (AES-256), надёжная очередь событий через паттерн Outbox и 2000+ тестов.
             </p>
             <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('medcourse')">Детали архитектуры →</button>
+              <button class="btn-inspect" onclick="openModal('medcourse')">Галерея и архитектура →</button>
               <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               </a>
@@ -166,18 +152,11 @@
 
         <!-- 3. PHANTOM WALLET -->
         <article class="project-card" data-category="telegram backend">
-          <div class="card-visual visual-wallet">
-            <div class="visual-badge">FinTech & AI Pet</div>
-            <div class="visual-mockup">
-              <div class="mockup-header">
-                <span class="pulse-gold"></span>
-                <span>SQLITE_WAL // ZERO_LOCK_TX</span>
-              </div>
-              <div class="mockup-code">
-                <code>&gt; ANTI_DOUBLE_SPEND: ACID_PASS</code><br>
-                <code>&gt; WEBAPP_INIT_DATA: HMAC_SHA256_VERIFIED</code><br>
-                <code>&gt; TESTS: 1,180 unit/integration</code>
-              </div>
+          <div class="card-visual" onclick="openModal('wallet')">
+            <img src="assets/projects/wallet_1.jpg" alt="PHANTOM WALLET" class="card-screenshot-img" loading="lazy">
+            <div class="card-screenshot-overlay">
+              <span class="visual-badge">FinTech & AI Pet</span>
+              <span class="screenshot-count-badge">📷 6 скриншотов</span>
             </div>
           </div>
           <div class="card-content">
@@ -192,7 +171,7 @@
               Финтех Telegram Mini App с AI-питомцем и геймифицированным финансовым учётом. Защита от race conditions при списаниях, SQLite в режиме WAL для супербыстрой записи без блокировок и 1180 автотестов.
             </p>
             <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('wallet')">Детали архитектуры →</button>
+              <button class="btn-inspect" onclick="openModal('wallet')">Галерея и архитектура →</button>
               <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               </a>
@@ -202,18 +181,11 @@
 
         <!-- 4. Nova Cinema -->
         <article class="project-card" data-category="telegram fullstack">
-          <div class="card-visual visual-cinema">
-            <div class="visual-badge">Seat Booking Engine</div>
-            <div class="visual-mockup">
-              <div class="mockup-header">
-                <span class="pulse-cyan"></span>
-                <span>SEAT_MAP_SYNC // REALTIME</span>
-              </div>
-              <div class="mockup-code">
-                <code>&gt; SEAT_LOCK_TTL: 600s_REDIS_LIKE</code><br>
-                <code>&gt; DOUBLE_BOOKING: PREVENTED</code><br>
-                <code>&gt; ENGINE: FastAPI + SQLite</code>
-              </div>
+          <div class="card-visual" onclick="openModal('cinema')">
+            <img src="assets/projects/cinema_1.jpg" alt="Nova Cinema" class="card-screenshot-img" loading="lazy">
+            <div class="card-screenshot-overlay">
+              <span class="visual-badge">Seat Booking Engine</span>
+              <span class="screenshot-count-badge">📷 3 скриншота</span>
             </div>
           </div>
           <div class="card-content">
@@ -228,7 +200,7 @@
               Telegram Mini App кинотеатра: интерактивная схема зрительного зала, мгновенная блокировка мест с защитой от одновременного выкупа (anti-double-booking) и интеграция платёжного шлюза.
             </p>
             <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('cinema')">Детали архитектуры →</button>
+              <button class="btn-inspect" onclick="openModal('cinema')">Галерея и архитектура →</button>
               <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               </a>
@@ -238,18 +210,11 @@
 
         <!-- 5. METTA_V2 -->
         <article class="project-card" data-category="fullstack backend">
-          <div class="card-visual visual-metta">
-            <div class="visual-badge">E-Commerce Monorepo</div>
-            <div class="visual-mockup">
-              <div class="mockup-header">
-                <span class="pulse-cyan"></span>
-                <span>MODULAR_MONOREPO // ACTIVE</span>
-              </div>
-              <div class="mockup-code">
-                <code>&gt; CORE: Next.js 14 App Router</code><br>
-                <code>&gt; ORM: Prisma + PostgreSQL</code><br>
-                <code>&gt; RBAC: Granular Admin Guard</code>
-              </div>
+          <div class="card-visual" onclick="openModal('metta')">
+            <img src="assets/projects/metta_1.jpg" alt="METTA_V2 Monorepo" class="card-screenshot-img" loading="lazy">
+            <div class="card-screenshot-overlay">
+              <span class="visual-badge">E-Commerce Monorepo</span>
+              <span class="screenshot-count-badge">📷 5 скриншотов</span>
             </div>
           </div>
           <div class="card-content">
@@ -264,7 +229,7 @@
               Масштабируемый монорепозиторий магазина электроники (витрина + административная панель). Типобезопасная работа с данными через Prisma ORM, Server Actions и строгий ролевой доступ (RBAC).
             </p>
             <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('metta')">Детали архитектуры →</button>
+              <button class="btn-inspect" onclick="openModal('metta')">Галерея и архитектура →</button>
               <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               </a>
