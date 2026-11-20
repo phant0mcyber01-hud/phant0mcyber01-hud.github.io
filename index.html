@@ -2,304 +2,323 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phant0m | Backend & CyberSec Engineer</title>
-  <meta name="description" content="Портфолио инженерных проектов Phant0m: Highload Backend, System Design, CyberSec, Telegram Mini Apps.">
-  <meta name="theme-color" content="#090c10">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23090c10'/><path d='M30 25h24c13.25 0 24 10.75 24 24s-10.75 24-24 24H44v15H30V25zm14 12v24h10c6.63 0 12-5.37 12-12s-5.37-12-12-12H44z' fill='%2300f0ff'/></svg>">
-  
-  <!-- OpenGraph / Social Previews -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Phant0m — Backend & CyberSec Engineer</title>
+  <meta name="description" content="Портфолио Phant0m: Highload Backend, System Design, практическая кибербезопасность и Telegram Mini Apps. Реальные проекты со скриншотами.">
+  <meta name="theme-color" content="#08090a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300e0ff'/><stop offset='1' stop-color='%237c5cff'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='%2308090a'/><path d='M32 24h22c13.8 0 24 10.2 24 24s-10.2 24-24 24H46v8H32V24zm14 12v24h8c6.6 0 11-5.4 11-12s-4.4-12-11-12h-8z' fill='url(%23g)'/></svg>">
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Phant0m | Backend & CyberSec Engineer">
-  <meta property="og:description" content="Highload Backend, System Design, CyberSec, Telegram Mini Apps. Инженерные кейсы и архитектурные решения.">
+  <meta property="og:title" content="Phant0m — Backend & CyberSec Engineer">
+  <meta property="og:description" content="Highload Backend, System Design, CyberSec, Telegram Mini Apps. Инженерные кейсы со скриншотами и архитектурой.">
   <meta property="og:url" content="https://phant0mcyber01-hud.github.io/">
+  <meta property="og:image" content="https://phant0mcyber01-hud.github.io/assets/projects/urban_1.jpg">
   <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.window{transform:none!important}</style></noscript>
 </head>
 <body>
 
-  <!-- Background Ambient Glow -->
-  <div class="ambient-glow glow-cyan"></div>
-  <div class="ambient-glow glow-crimson"></div>
-
-  <!-- Header / Navigation -->
-  <header class="header">
-    <div class="container nav-content">
-      <a href="#" class="logo">
-        <span class="logo-bracket">[</span><span class="logo-text">Phant0m</span><span class="logo-cursor">_</span><span class="logo-bracket">]</span>
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Phant0m — на главную">
+        <span class="brand-mark">P</span>
+        <span class="brand-name">Phant0m</span>
       </a>
-      <nav class="nav-links">
+
+      <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
         <a href="#projects">Проекты</a>
+        <a href="#approach">Подход</a>
         <a href="#stack">Стек</a>
-        <a href="https://t.me/phant0m_BIO_channel" target="_blank" class="nav-btn-tg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
-          Канал @phant0m_BIO
-        </a>
+        <a href="#channel">Канал</a>
+        <a href="https://github.com/phant0mcyber01-hud" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://t.me/phant0m_BIO_channel" target="_blank" rel="noopener" class="nav-mobile-tg">Telegram-канал →</a>
       </nav>
+
+      <div class="nav-actions">
+        <a href="https://t.me/phant0m_BIO_channel" target="_blank" rel="noopener" class="btn btn-sm btn-light">
+          Telegram-канал
+        </a>
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero Section / Terminal -->
-    <section class="hero-section">
-      <div class="terminal-card">
-        <div class="terminal-bar">
-          <div class="dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <span class="terminal-title">whoami@phant0m-node:~</span>
-        </div>
-        <div class="terminal-body">
-          <p><span class="prompt">$</span> <span class="cmd">whoami</span></p>
-          <h1 class="hero-name">Phant0m <span class="badge-role">Backend & CyberSec Engineer</span></h1>
-          <p class="hero-desc">
-            Проектирую отказоустойчивые распределённые и модульные бэкенды, Telegram-экосистемы и инструменты практической безопасности.
-            В канале <a href="https://t.me/phant0m_BIO_channel" target="_blank" class="accent-link">@phant0m_BIO_channel</a> разбираю реальные 0-day эксплойты, векторы атак и System Design без инфоцыганства.
-          </p>
-          <div class="hero-links">
-            <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="btn btn-outline">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              GitHub Профиль
-            </a>
-            <a href="https://t.me/whoami_user01" target="_blank" class="btn btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-              Связаться (@whoami_user01)
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <main id="top">
 
-    <!-- Filters Section -->
-    <section id="projects" class="section">
-      <div class="section-header">
-        <h2 class="section-title"><span class="accent-hash">#</span> Инженерные Кейсы & Проекты</h2>
-        <p class="section-subtitle">Реализованные архитектуры с акцентом на безопасность, ACID-надежность и тестовое покрытие.</p>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-lines"></div>
       </div>
 
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Все проекты</button>
-        <button class="filter-btn" data-filter="backend">Backend & System Design</button>
-        <button class="filter-btn" data-filter="telegram">Telegram Mini Apps</button>
-        <button class="filter-btn" data-filter="fullstack">Fullstack & Web</button>
-      </div>
-
-      <!-- Projects Grid -->
-      <div class="projects-grid">
-
-        <!-- 1. URBAN -->
-        <article class="project-card" data-category="backend">
-          <div class="card-visual" onclick="openModal('urban')">
-            <img src="assets/projects/urban_1.jpg" alt="URBAN City OS" class="card-screenshot-img" loading="lazy">
-            <div class="card-screenshot-overlay">
-              <span class="visual-badge">City OS & Digital Twin</span>
-              <span class="screenshot-count-badge">📷 5 скриншотов</span>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-tags">
-              <span class="tag">Highload</span>
-              <span class="tag">CyberSec</span>
-              <span class="tag">Docker</span>
-              <span class="tag">WebSockets</span>
-            </div>
-            <h3 class="card-title">🚦 URBAN — City OS</h3>
-            <p class="card-desc">
-              Платформа умного города с цифровым 3D-двойником инфраструктуры. Высоконагруженный контур сбора телеметрии сенсоров, строгая изоляция сетевых контуров безопасности и автоматические откаты при аномалиях.
-            </p>
-            <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('urban')">Галерея и архитектура →</button>
-              <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 2. MedCourse -->
-        <article class="project-card" data-category="backend telegram">
-          <div class="card-visual" onclick="openModal('medcourse')">
-            <img src="assets/projects/medcourse_1.jpg" alt="MedCourse Platform" class="card-screenshot-img" loading="lazy">
-            <div class="card-screenshot-overlay">
-              <span class="visual-badge">E-Health & FinOps</span>
-              <span class="screenshot-count-badge">📷 2 скриншота</span>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-tags">
-              <span class="tag">FastAPI</span>
-              <span class="tag">AES-256</span>
-              <span class="tag">Outbox Pattern</span>
-              <span class="tag">2000+ Tests</span>
-            </div>
-            <h3 class="card-title">💊 MedCourse — Platform</h3>
-            <p class="card-desc">
-              Telegram-экосистема медицинского сопровождения и курсового приёма препаратов. Полное шифрование чувствительных персональных данных (AES-256), надёжная очередь событий через паттерн Outbox и 2000+ тестов.
-            </p>
-            <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('medcourse')">Галерея и архитектура →</button>
-              <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 3. PHANTOM WALLET -->
-        <article class="project-card" data-category="telegram backend">
-          <div class="card-visual" onclick="openModal('wallet')">
-            <img src="assets/projects/wallet_1.jpg" alt="PHANTOM WALLET" class="card-screenshot-img" loading="lazy">
-            <div class="card-screenshot-overlay">
-              <span class="visual-badge">FinTech & AI Pet</span>
-              <span class="screenshot-count-badge">📷 6 скриншотов</span>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-tags">
-              <span class="tag">Telegram Mini App</span>
-              <span class="tag">SQLite WAL</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">1180 Tests</span>
-            </div>
-            <h3 class="card-title">👻 PHANTOM WALLET</h3>
-            <p class="card-desc">
-              Финтех Telegram Mini App с AI-питомцем и геймифицированным финансовым учётом. Защита от race conditions при списаниях, SQLite в режиме WAL для супербыстрой записи без блокировок и 1180 автотестов.
-            </p>
-            <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('wallet')">Галерея и архитектура →</button>
-              <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 4. Nova Cinema -->
-        <article class="project-card" data-category="telegram fullstack">
-          <div class="card-visual" onclick="openModal('cinema')">
-            <img src="assets/projects/cinema_1.jpg" alt="Nova Cinema" class="card-screenshot-img" loading="lazy">
-            <div class="card-screenshot-overlay">
-              <span class="visual-badge">Seat Booking Engine</span>
-              <span class="screenshot-count-badge">📷 3 скриншота</span>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-tags">
-              <span class="tag">Telegram Mini App</span>
-              <span class="tag">Real-time Locks</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">AsyncIO</span>
-            </div>
-            <h3 class="card-title">🎬 Nova Cinema</h3>
-            <p class="card-desc">
-              Telegram Mini App кинотеатра: интерактивная схема зрительного зала, мгновенная блокировка мест с защитой от одновременного выкупа (anti-double-booking) и интеграция платёжного шлюза.
-            </p>
-            <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('cinema')">Галерея и архитектура →</button>
-              <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- 5. METTA_V2 -->
-        <article class="project-card" data-category="fullstack backend">
-          <div class="card-visual" onclick="openModal('metta')">
-            <img src="assets/projects/metta_1.jpg" alt="METTA_V2 Monorepo" class="card-screenshot-img" loading="lazy">
-            <div class="card-screenshot-overlay">
-              <span class="visual-badge">E-Commerce Monorepo</span>
-              <span class="screenshot-count-badge">📷 5 скриншотов</span>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-tags">
-              <span class="tag">Next.js 14</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">Prisma</span>
-              <span class="tag">PostgreSQL</span>
-            </div>
-            <h3 class="card-title">🛍 METTA_V2 — Monorepo</h3>
-            <p class="card-desc">
-              Масштабируемый монорепозиторий магазина электроники (витрина + административная панель). Типобезопасная работа с данными через Prisma ORM, Server Actions и строгий ролевой доступ (RBAC).
-            </p>
-            <div class="card-footer">
-              <button class="btn-inspect" onclick="openModal('metta')">Галерея и архитектура →</button>
-              <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="github-icon" title="Репозиторий">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Stack Section -->
-    <section id="stack" class="section stack-section">
-      <div class="section-header">
-        <h2 class="section-title"><span class="accent-hash">#</span> Технический Арсенал & Стек</h2>
-        <p class="section-subtitle">Инструменты и стандарты, на которых строятся продакшн-системы.</p>
-      </div>
-      <div class="stack-grid">
-        <div class="stack-card">
-          <div class="stack-icon">⚡</div>
-          <h4>Core Backend</h4>
-          <p>Python (FastAPI, AsyncIO), TypeScript (Node.js/Next.js), Go (микросервисы/утилиты). Архитектура DDD, Modular Monolith.</p>
-        </div>
-        <div class="stack-card">
-          <div class="stack-icon">🛡</div>
-          <h4>CyberSec & Audit</h4>
-          <p>Аудит сессий (Cookie/Token Hijacking), реверс-инжиниринг, PoC уязвимостей, валидация Telegram initData, шифрование AES-256.</p>
-        </div>
-        <div class="stack-card">
-          <div class="stack-icon">💾</div>
-          <h4>Data & Storage</h4>
-          <p>PostgreSQL, SQLite в режиме WAL (High Concurrency), Redis, Prisma ORM, SQLAlchemy, миграции и Outbox Pattern.</p>
-        </div>
-        <div class="stack-card">
-          <div class="stack-icon">🧪</div>
-          <h4>Reliability & QA</h4>
-          <p>Pytest, Vitest, 1000+ тестов на проект, Docker, CI/CD GitHub Actions, стресс-тестирование Locust, строгая типизация.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Channel Promo Footer Banner -->
-    <section class="channel-banner">
-      <div class="banner-inner">
-        <div>
-          <h3>Читайте технические разборы в Telegram</h3>
-          <p>Глубокие статьи про 0-day эксплойты, System Design и высоконагруженную разработку без воды.</p>
-        </div>
-        <a href="https://t.me/phant0m_BIO_channel" target="_blank" class="btn btn-primary btn-large">
-          Перейти в @phant0m_BIO_channel →
+      <div class="container hero-inner">
+        <a href="https://t.me/phant0m_BIO_channel" target="_blank" rel="noopener" class="pill reveal">
+          <span class="pill-dot"></span>
+          Новое в канале: Cloud SSRF и кража IAM-токенов
+          <span class="pill-arrow">→</span>
         </a>
+
+        <h1 class="hero-title reveal">
+          Строю бэкенды,<br>
+          <span class="text-gradient">которые сложно сломать.</span>
+        </h1>
+
+        <p class="hero-sub reveal">
+          Backend &amp; CyberSec Engineer. Проектирую отказоустойчивые системы, Telegram-экосистемы
+          и инструменты практической безопасности — с тысячами тестов и защитой на уровне архитектуры.
+        </p>
+
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
+          <a href="https://t.me/whoami_user01" target="_blank" rel="noopener" class="btn btn-ghost">
+            Связаться
+            <span class="kbd">@whoami_user01</span>
+          </a>
+        </div>
+
+        <div class="hero-stats reveal">
+          <div class="stat"><span class="stat-num" data-count="5">5</span><span class="stat-label">продакшн-проектов</span></div>
+          <div class="stat"><span class="stat-num" data-count="3700" data-suffix="+">3 700+</span><span class="stat-label">автотестов</span></div>
+          <div class="stat"><span class="stat-num" data-count="21">21</span><span class="stat-label">скриншот в галерее</span></div>
+          <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">сайт и канал онлайн</span></div>
+        </div>
+      </div>
+
+      <!-- Product window (Linear-style) -->
+      <div class="container">
+        <div class="showcase reveal" id="showcase">
+          <div class="window">
+            <div class="window-bar">
+              <span class="wdot"></span><span class="wdot"></span><span class="wdot"></span>
+              <span class="window-title">urban — city-os / control-center</span>
+            </div>
+            <img src="assets/projects/urban_1.jpg" alt="URBAN City OS — центр управления" class="window-img">
+          </div>
+          <div class="float-card fc-1">
+            <span class="fc-icon">🛡</span>
+            <div><b>Secure Boot + A/B</b><small>подписанные обновления</small></div>
+          </div>
+          <div class="float-card fc-2">
+            <span class="fc-icon ok">✓</span>
+            <div><b>583 теста</b><small>все проходят</small></div>
+          </div>
+          <div class="float-card fc-3">
+            <span class="fc-icon">↺</span>
+            <div><b>Автооткат</b><small>при сбое связи</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-label="Технологии">
+      <div class="marquee-track">
+        <span>Python</span><span>FastAPI</span><span>TypeScript</span><span>Next.js</span><span>Go</span>
+        <span>PostgreSQL</span><span>SQLite WAL</span><span>Redis</span><span>Docker</span><span>Telegram Mini Apps</span>
+        <span>AES-256</span><span>Outbox Pattern</span><span>WebSockets</span><span>Prisma</span><span>GitHub Actions</span>
+        <span>Python</span><span>FastAPI</span><span>TypeScript</span><span>Next.js</span><span>Go</span>
+        <span>PostgreSQL</span><span>SQLite WAL</span><span>Redis</span><span>Docker</span><span>Telegram Mini Apps</span>
+        <span>AES-256</span><span>Outbox Pattern</span><span>WebSockets</span><span>Prisma</span><span>GitHub Actions</span>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">01 — Проекты</span>
+          <h2 class="section-title">Инженерные кейсы,<br><span class="muted">а не учебные to-do листы.</span></h2>
+          <p class="section-sub">Каждый проект — с галереей реальных скриншотов, ключевыми решениями и фрагментом архитектуры.</p>
+        </div>
+
+        <div class="tabs reveal" role="tablist" id="filterTabs">
+          <button class="tab active" data-filter="all" role="tab">Все</button>
+          <button class="tab" data-filter="backend" role="tab">Backend</button>
+          <button class="tab" data-filter="telegram" role="tab">Telegram</button>
+          <button class="tab" data-filter="fullstack" role="tab">Fullstack</button>
+          <span class="tab-indicator" aria-hidden="true"></span>
+        </div>
+
+        <div class="bento" id="projectsGrid"><!-- rendered by script.js --></div>
+      </div>
+    </section>
+
+    <!-- ============ APPROACH (Notion-like modules) ============ -->
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">02 — Подход</span>
+          <h2 class="section-title">Безопасность — это не фича.<br><span class="muted">Это фундамент.</span></h2>
+        </div>
+
+        <div class="modules">
+          <article class="module reveal spot">
+            <div class="module-icon i-cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 4.5-3.4 8.4-8 9-4.6-.6-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Security by design</h3>
+            <p>Подписанные команды, WireGuard, валидация initData, шифрование полей AES-256. Угрозы моделируются до первой строчки кода.</p>
+          </article>
+          <article class="module reveal spot">
+            <div class="module-icon i-violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg>
+            </div>
+            <h3>Отказоустойчивость</h3>
+            <p>Outbox Pattern, ретраи, автооткаты и деградация без потери данных. Система возвращается в безопасное состояние сама.</p>
+          </article>
+          <article class="module reveal spot">
+            <div class="module-icon i-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></svg>
+            </div>
+            <h3>Тесты как контракт</h3>
+            <p>1 000+ тестов на проект: финансовая логика, гонки, граничные сценарии. Зелёный CI — обязательное условие релиза.</p>
+          </article>
+          <article class="module reveal spot">
+            <div class="module-icon i-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg>
+            </div>
+            <h3>Простая архитектура</h3>
+            <p>Модульный монолит вместо зоопарка микросервисов, пока это оправдано. Меньше движущихся частей — меньше поверхность атаки.</p>
+          </article>
+        </div>
+
+        <!-- Stripe-like flow diagram -->
+        <div class="flow reveal">
+          <div class="flow-head">
+            <span class="eyebrow">Как проходит запрос</span>
+            <h3>Путь команды в URBAN — от оператора до перекрёстка</h3>
+          </div>
+          <div class="flow-track">
+            <div class="flow-node"><span class="fn-step">1</span><b>Оператор</b><small>RBAC + журнал</small></div>
+            <div class="flow-line"><span class="flow-pulse"></span></div>
+            <div class="flow-node"><span class="fn-step">2</span><b>Подпись</b><small>команда со сроком</small></div>
+            <div class="flow-line"><span class="flow-pulse"></span></div>
+            <div class="flow-node"><span class="fn-step">3</span><b>Gateway</b><small>WireGuard-туннель</small></div>
+            <div class="flow-line"><span class="flow-pulse"></span></div>
+            <div class="flow-node accent"><span class="fn-step">4</span><b>Edge-контроллер</b><small>проверка + откат</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="section" id="stack">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">03 — Стек</span>
+          <h2 class="section-title">Инструменты,<br><span class="muted">проверенные продакшеном.</span></h2>
+        </div>
+
+        <div class="stack">
+          <div class="stack-col reveal spot">
+            <h4><span class="sdot c1"></span>Core Backend</h4>
+            <ul><li>Python · FastAPI · AsyncIO</li><li>TypeScript · Node.js · Next.js</li><li>Go — утилиты и сервисы</li><li>DDD · Modular Monolith</li></ul>
+          </div>
+          <div class="stack-col reveal spot">
+            <h4><span class="sdot c2"></span>CyberSec</h4>
+            <ul><li>Аудит сессий и токенов</li><li>PoC уязвимостей · SSRF · RCE</li><li>HMAC initData · WireGuard</li><li>Шифрование AES-256</li></ul>
+          </div>
+          <div class="stack-col reveal spot">
+            <h4><span class="sdot c3"></span>Data</h4>
+            <ul><li>PostgreSQL · Redis</li><li>SQLite WAL (high concurrency)</li><li>Prisma · SQLAlchemy</li><li>Outbox · миграции</li></ul>
+          </div>
+          <div class="stack-col reveal spot">
+            <h4><span class="sdot c4"></span>Reliability</h4>
+            <ul><li>Pytest · Vitest</li><li>Docker · GitHub Actions</li><li>Нагрузочные тесты Locust</li><li>Строгая типизация</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHANNEL ============ -->
+    <section class="section" id="channel">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">04 — Telegram-канал</span>
+          <h2 class="section-title">Разборы эксплойтов<br><span class="muted">и архитектуры без воды.</span></h2>
+          <p class="section-sub">60% практической кибербезопасности, 40% Highload и System Design. Свежие посты:</p>
+        </div>
+
+        <div class="posts">
+          <a class="post reveal spot" href="https://t.me/phant0m_BIO_channel/49" target="_blank" rel="noopener">
+            <span class="post-tag t-red">#эксплойт</span>
+            <h3>Cloud SSRF: как одна строка кода отдаёт IAM-токены облака</h3>
+            <p>169.254.169.254, IMDSv2, обход через Hop Limit в Kubernetes и защита.</p>
+            <span class="post-link">Читать →</span>
+          </a>
+          <a class="post reveal spot" href="https://t.me/phant0m_BIO_channel/51" target="_blank" rel="noopener">
+            <span class="post-tag t-cyan">#инструменты</span>
+            <h3>Caido: Rust-замена Burp Suite за 50 МБ RAM</h3>
+            <p>Клиент-серверная архитектура, язык QSL и запуск в Docker за 10 секунд.</p>
+            <span class="post-link">Читать →</span>
+          </a>
+          <a class="post reveal spot" href="https://t.me/phant0m_BIO_channel/55" target="_blank" rel="noopener">
+            <span class="post-tag t-violet">#архитектура</span>
+            <h3>Cloud Exit: как 37signals сэкономили $3.2 млн, уйдя из AWS</h3>
+            <p>Своё железо, Kamal вместо Kubernetes и NVMe без лимитов IOPS.</p>
+            <span class="post-link">Читать →</span>
+          </a>
+        </div>
+
+        <div class="cta-card reveal">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <div class="cta-text">
+            <h3>Подпишись на @phant0m_BIO_channel</h3>
+            <p>Реальные 0-day, open-source утилиты с GitHub и кейсы System Design — каждую неделю.</p>
+          </div>
+          <a href="https://t.me/phant0m_BIO_channel" target="_blank" rel="noopener" class="btn btn-light">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6l-3.2 15c-.2 1-.9 1.3-1.8.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.4 13.3l-4.7-1.5c-1-.3-1-1 .2-1.5l18.5-7.1c.9-.3 1.6.2 1.5 1.4z"/></svg>
+            Открыть канал
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <div class="container footer-content">
-      <p>© 2026 Phant0m. All rights reserved. Open-source engineering.</p>
-      <div class="footer-links">
-        <a href="https://github.com/phant0mcyber01-hud" target="_blank">GitHub</a>
-        <a href="https://t.me/phant0m_BIO_channel" target="_blank">Telegram Канал</a>
-        <a href="https://t.me/whoami_user01" target="_blank">Связь</a>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="brand"><span class="brand-mark">P</span><span class="brand-name">Phant0m</span></a>
+        <p>Backend &amp; CyberSec Engineer.<br>Открыт к проектам и сотрудничеству.</p>
       </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Навигация</h5>
+          <a href="#projects">Проекты</a><a href="#approach">Подход</a><a href="#stack">Стек</a>
+        </div>
+        <div>
+          <h5>Связь</h5>
+          <a href="https://t.me/whoami_user01" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://t.me/phant0m_BIO_channel" target="_blank" rel="noopener">Канал</a>
+          <a href="https://github.com/phant0mcyber01-hud" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Phant0m</span>
+      <span class="status"><span class="status-dot"></span>Все системы работают</span>
     </div>
   </footer>
 
-  <!-- Modal Lightbox for Project Details & Architecture Deep Dive -->
-  <div id="projectModal" class="modal">
-    <div class="modal-overlay" onclick="closeModal()"></div>
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal()">×</button>
+  <!-- ============ MODAL ============ -->
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
       <div id="modalContent"></div>
     </div>
   </div>

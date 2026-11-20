@@ -1,260 +1,425 @@
-// Project Detailed Data for Modal Lightbox
-const projectsData = {
-  urban: {
-    title: "🚦 URBAN — City OS & Digital Twin",
-    badge: "Highload Backend / CyberSec / Telemetry",
-    tags: ["FastAPI", "WebSockets", "Docker", "Auto-Rollback", "PostgreSQL"],
-    images: [
-      "assets/projects/urban_1.jpg",
-      "assets/projects/urban_2.jpg",
-      "assets/projects/urban_3.jpg",
-      "assets/projects/urban_4.jpg",
-      "assets/projects/urban_5.jpg"
+/* =========================================================
+   Phant0m — Portfolio logic
+   Чтобы добавить проект: добавь объект в массив PROJECTS ниже.
+   ========================================================= */
+
+const GH = "https://github.com/phant0mcyber01-hud";
+
+const PROJECTS = [
+  {
+    id: "urban",
+    featured: true,
+    category: ["backend"],
+    kicker: "City OS · Digital Twin · Пилот: Фергана",
+    title: "URBAN — операционная система умного города",
+    short: "Светофоры, освещение и водоканал на одном защищённом ядре. Камеры считают метры очереди, а не людей — никаких лиц и номеров. Подписанные команды, автооткат при потере связи и 3D-двойник района.",
+    metrics: [
+      { v: "583", l: "теста проходят" },
+      { v: "−12–17%", l: "пробок в симуляции" },
+      { v: "3 мин", l: "до автоотката" }
     ],
-    desc: "Платформа умного города для мониторинга критической инфраструктуры в реальном времени. Включает 3D-цифровой двойник объектов, распределённый сбор данных с тысяч датчиков и контур отказоустойчивости.",
+    tags: ["Python 3.11", "FastAPI", "WebSockets", "Docker", "x86 / ARM64"],
+    repo: `${GH}/URBAN-system_demo`,
+    images: ["urban_1", "urban_2", "urban_3", "urban_4", "urban_5"],
+    desc: "Платформа управления городской инфраструктурой: общее ядро (устройства и их ключи, подписанные команды со сроком действия, роли, журнал, обновления) и модули поверх него — светофоры и пробки, уличное освещение, водоканал (только чтение).",
     features: [
-      "Строгая изоляция сетевых контуров безопасности (Zero Trust сегментация сенсоров)",
-      "Механизм автооткатов (Auto-Rollbacks) при обнаружении аномалий в телеметрии",
-      "Сверхнизкая задержка передачи событий по WebSockets (p99 < 3ms)",
-      "Резервирование узлов и устойчивость к сбоям внешних провайдеров связи"
+      "Privacy by design: камеры считают метры очереди, лица и номера никуда не уходят и не хранятся",
+      "Подписанные команды с TTL — истёк срок или пропала связь, контроллер сам возвращается к расписанию",
+      "Блокировка перекрёстка при вскрытии шкафа и контроль перегрева edge-устройств",
+      "Secure Boot и A/B-обновления для x86 и ARM64 с автоматическим откатом"
     ],
-    codeSnippet: `// Схема контура безопасности URBAN
-[Edge Sensors] -> mTLS -> [Ingest Gateway] -> Queue (Zero-Drop)
-                              |
-                     [Anomaly Detection]
-                              |
-               [Auto-Rollback Trigger < 50ms]`
+    code: `# Путь команды: оператор -> перекрёсток
+[Operator] -> RBAC + audit log
+     |
+[Sign command + expiry]
+     |
+[District server] <- WireGuard tunnel
+     |
+[Edge controller] verify(sig, ttl)
+     |-- ok      -> apply plan
+     '-- expired -> rollback to schedule`
   },
-  medcourse: {
-    title: "💊 MedCourse — Telegram Platform",
-    badge: "E-Health / End-to-End Encryption / FinOps",
-    tags: ["Telegram Bot API", "FastAPI", "AES-256", "Outbox Pattern", "2000+ Tests"],
-    images: [
-      "assets/projects/medcourse_1.jpg",
-      "assets/projects/medcourse_2.jpg"
-    ],
-    desc: "Медицинская Telegram-платформа для контроля курсов приёма препаратов, взаимодействия пациентов с клиниками и безопасного хранения истории болезни.",
+  {
+    id: "medcourse",
+    category: ["backend", "telegram"],
+    kicker: "E-Health · Telegram",
+    title: "MedCourse",
+    short: "Telegram-платформа контроля курсов лечения. Шифрование персональных данных AES-256, гарантированная доставка напоминаний через Outbox.",
+    tags: ["FastAPI", "AES-256", "Outbox", "2000+ тестов"],
+    repo: `${GH}/Med_Course`,
+    images: ["medcourse_1", "medcourse_2"],
+    desc: "Медицинская Telegram-платформа для контроля приёма препаратов, взаимодействия пациентов с клиниками и безопасного хранения истории.",
     features: [
-      "Field-Level шифрование персональных и медицинских данных алгоритмом AES-256",
-      "Outbox Pattern в БД: 100% гарантия доставки системных уведомлений и напоминаний",
-      "Более 2000 модульных и интеграционных тестов с покрытием граничных сценариев",
-      "Полная независимость от падений сетевых шлюзов Telegram благодаря очередям ретраев"
+      "Field-level шифрование медицинских данных алгоритмом AES-256",
+      "Outbox Pattern: напоминание не потеряется даже при падении сервиса",
+      "Более 2000 модульных и интеграционных тестов",
+      "Очереди ретраев — устойчивость к сбоям шлюзов Telegram"
     ],
-    codeSnippet: `// Outbox Pattern Transaction
+    code: `# Outbox: событие и уведомление — в одной транзакции
 async with db.transaction():
-    await record_medical_event(patient_id, event_data_encrypted)
-    await outbox_repo.enqueue(NotificationTask(type="PILL_REMINDER"))
-// Гарантия ACID: уведомление не потеряется даже при краше сервиса`
+    await record_event(patient_id, encrypted_payload)
+    await outbox.enqueue(Notification(type="PILL_REMINDER"))
+# ACID: либо оба, либо ничего`
   },
-  wallet: {
-    title: "👻 PHANTOM WALLET — FinTech Mini App",
-    badge: "Telegram Mini App / High Concurrency / Anti-Race",
-    tags: ["Telegram WebApp", "FastAPI", "SQLite WAL", "Pydantic v2", "1180 Tests"],
-    images: [
-      "assets/projects/wallet_1.jpg",
-      "assets/projects/wallet_2.jpg",
-      "assets/projects/wallet_3.jpg",
-      "assets/projects/wallet_4.jpg",
-      "assets/projects/wallet_5.jpg",
-      "assets/projects/wallet_6.jpg"
-    ],
-    desc: "Финтех Telegram Mini App с интегрированным AI-питомцем и геймификацией сбережений. Разработан с фокусом на моментальный отклик и абсолютную финансовую целостность.",
+  {
+    id: "wallet",
+    category: ["telegram", "backend"],
+    kicker: "FinTech · Mini App",
+    title: "PHANTOM WALLET",
+    short: "Финтех Mini App с AI-питомцем. Защита от двойного списания, SQLite в режиме WAL и криптопроверка initData.",
+    tags: ["Telegram WebApp", "SQLite WAL", "HMAC", "1180 тестов"],
+    repo: GH,
+    images: ["wallet_1", "wallet_2", "wallet_3", "wallet_4", "wallet_5", "wallet_6"],
+    desc: "Финтех Telegram Mini App с AI-питомцем и геймификацией сбережений. Фокус — мгновенный отклик и абсолютная финансовая целостность.",
     features: [
-      "Защита от race conditions (Double Spending Protection) через строгие блокировки строк баланса",
-      "SQLite в режиме Write-Ahead Logging (WAL): сотни параллельных чтений без блокировки пишущего потока",
-      "Криптографическая проверка подлинности Telegram WebApp initData (HMAC-SHA256)",
-      "1,180 автоматических тестов, проверяющих финансовую логику и стрессовые сценарии списаний"
+      "Double-spending protection через строгие блокировки строк баланса",
+      "SQLite WAL: сотни параллельных чтений без блокировки записи",
+      "Проверка подлинности Telegram initData (HMAC-SHA256)",
+      "1 180 тестов финансовой логики и стрессовых сценариев"
     ],
-    codeSnippet: `// Валидация подписи Telegram initData
-secret_key = hmac.new(b"WebAppData", bot_token.encode(), hashlib.sha256).digest()
-data_check = hmac.new(secret_key, data_check_string.encode(), hashlib.sha256).hexdigest()
-assert hmac.compare_digest(data_check, received_hash)  # Zero spoofing`
+    code: `# Валидация подписи Telegram initData
+secret = hmac.new(b"WebAppData", bot_token.encode(), sha256).digest()
+calc = hmac.new(secret, data_check_string.encode(), sha256).hexdigest()
+assert hmac.compare_digest(calc, received_hash)  # zero spoofing`
   },
-  cinema: {
-    title: "🎬 Nova Cinema — Seat Reservation Engine",
-    badge: "Telegram Mini App / Real-time Concurrency",
-    tags: ["Telegram Mini App", "FastAPI", "Real-Time Locks", "AsyncIO", "SQLite"],
-    images: [
-      "assets/projects/cinema_1.jpg",
-      "assets/projects/cinema_2.jpg",
-      "assets/projects/cinema_3.jpg"
-    ],
-    desc: "Сервис бронирования билетов в кинотеатры прямо в интерфейсе Telegram. Интерактивная карта зрительного зала и моментальное оформление заказов.",
+  {
+    id: "cinema",
+    category: ["telegram", "fullstack"],
+    kicker: "Booking · Mini App",
+    title: "Nova Cinema",
+    short: "Бронирование билетов прямо в Telegram: интерактивная схема зала и блокировка мест без двойных продаж.",
+    tags: ["Mini App", "FastAPI", "AsyncIO", "Seat Locks"],
+    repo: `${GH}/Nova-cinema_v2`,
+    images: ["cinema_1", "cinema_2", "cinema_3"],
+    desc: "Сервис бронирования билетов в кинотеатр в интерфейсе Telegram: карта зала, мгновенное оформление и оплата.",
     features: [
-      "Anti-Double-Booking механизм: временная блокировка выбранных кресел (Seat Lock TTL) с автоосвобождением",
-      "Бесшовный UX в Telegram WebApp: нативное открытие без необходимости авторизации по логину/паролю",
-      "Асинхронный движок на FastAPI с минимальным потреблением оперативной памяти",
-      "Интеграция платёжного шлюза с вебхуками подтверждения транзакций"
+      "Anti-double-booking: временная блокировка кресла (TTL) с автоосвобождением",
+      "Нативный вход через Telegram — без логинов и паролей",
+      "Асинхронный движок FastAPI с минимальным потреблением памяти",
+      "Вебхуки подтверждения платежей"
     ],
-    codeSnippet: `// Механизм блокировки кресел
-async def lock_seat(hall_id, seat_id, user_id, ttl_seconds=600):
-    locked = await cache.set(f"seat:{hall_id}:{seat_id}", user_id, ex=ttl_seconds, nx=True)
-    if not locked:
-        raise SeatAlreadyTakenException()`
+    code: `# Атомарная блокировка кресла
+async def lock_seat(hall, seat, user, ttl=600):
+    ok = await cache.set(f"seat:{hall}:{seat}", user, ex=ttl, nx=True)
+    if not ok:
+        raise SeatAlreadyTaken()`
   },
-  metta: {
-    title: "🛍 METTA_V2 — E-Commerce Monorepo",
-    badge: "Fullstack Architecture / Next.js / Prisma",
-    tags: ["Next.js 14 App Router", "TypeScript", "Prisma ORM", "PostgreSQL", "RBAC"],
-    images: [
-      "assets/projects/metta_1.jpg",
-      "assets/projects/metta_2.jpg",
-      "assets/projects/metta_3.jpg",
-      "assets/projects/metta_4.jpg",
-      "assets/projects/metta_5.jpg"
-    ],
-    desc: "Современный масштабируемый интернет-магазин электроники, организованный по принципу чистого модульного монорепозитория (клиентская витрина + защищённая админка).",
+  {
+    id: "metta",
+    category: ["fullstack", "backend"],
+    kicker: "E-Commerce · Monorepo",
+    title: "METTA_V2",
+    short: "Монорепозиторий магазина электроники: витрина и админка, Prisma, Server Actions и строгий RBAC.",
+    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL"],
+    repo: GH,
+    images: ["metta_1", "metta_2", "metta_3", "metta_4", "metta_5"],
+    desc: "Масштабируемый интернет-магазин электроники, организованный как модульный монорепозиторий: клиентская витрина + защищённая админ-панель.",
     features: [
-      "Строгое разделение прав доступа (RBAC): гранулярные роли администраторов, менеджеров и клиентов",
-      "Next.js Server Actions и App Router для мгновенной отрисовки каталога и SEO",
-      "Типобезопасные запросы к БД через Prisma ORM с автомиграциями",
-      "Интеграция корзины, фильтрации характеристик и системы складского остатка"
+      "RBAC: гранулярные роли администраторов, менеджеров и клиентов",
+      "Next.js App Router и Server Actions — быстрый каталог и SEO",
+      "Типобезопасные запросы через Prisma с миграциями",
+      "Корзина, фильтры по характеристикам и складские остатки"
     ],
-    codeSnippet: `// Модульный Bounded Context каталога и остатков
-export async function purchaseItem(itemId: string, userId: string) {
-  return await prisma.$transaction(async (tx) => {
+    code: `// Покупка без овербукинга склада
+export async function purchase(itemId: string, userId: string) {
+  return prisma.$transaction(async (tx) => {
     const item = await tx.item.update({
       where: { id: itemId, stock: { gt: 0 } },
-      data: { stock: { decrement: 1 } }
+      data: { stock: { decrement: 1 } },
     });
-    return await tx.order.create({ data: { userId, itemId: item.id } });
+    return tx.order.create({ data: { userId, itemId: item.id } });
   });
 }`
   }
-};
+];
 
-// Filter Projects
-document.addEventListener("DOMContentLoaded", () => {
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
+const img = (name) => `assets/projects/${name}.jpg`;
+const plural = (n) => (n % 10 === 1 && n % 100 !== 11 ? "скриншот" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? "скриншота" : "скриншотов");
 
-  filterBtns.forEach(btn => {
+const escapeHtml = (s) =>
+  String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const ghIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>`;
+
+/* ---------- Render project cards ---------- */
+function renderProjects() {
+  const grid = document.getElementById("projectsGrid");
+  grid.innerHTML = PROJECTS.map((p) => {
+    const metrics = p.metrics
+      ? `<div class="metrics">${p.metrics.map((m) => `<div class="metric"><b>${m.v}</b><small>${m.l}</small></div>`).join("")}</div>`
+      : "";
+    return `
+      <article class="card spot reveal ${p.featured ? "featured" : ""}" data-id="${p.id}" data-category="${p.category.join(" ")}" tabindex="0" role="button" aria-label="Открыть проект ${escapeHtml(p.title)}">
+        <div class="card-media">
+          <img src="${img(p.images[0])}" alt="${escapeHtml(p.title)}" loading="lazy">
+          <span class="media-badge">◧ ${p.images.length} ${plural(p.images.length)}</span>
+        </div>
+        <div class="card-body">
+          <span class="card-kicker">${p.kicker}</span>
+          <h3 class="card-title">${p.title}</h3>
+          <p class="card-desc">${p.short}</p>
+          ${metrics}
+          <div class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+          <div class="card-foot">
+            <span class="card-open">Галерея и архитектура <span class="arr">→</span></span>
+            <a href="${p.repo}" target="_blank" rel="noopener" class="icon-btn" title="Код на GitHub" data-stop>${ghIcon}</a>
+          </div>
+        </div>
+      </article>`;
+  }).join("");
+
+  grid.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("[data-stop]")) return;
+      openModal(card.dataset.id);
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.dataset.id); }
+    });
+  });
+}
+
+/* ---------- Tabs / filter ---------- */
+function initTabs() {
+  const tabs = document.getElementById("filterTabs");
+  const indicator = tabs.querySelector(".tab-indicator");
+  const buttons = [...tabs.querySelectorAll(".tab")];
+
+  const move = (btn) => {
+    indicator.style.width = `${btn.offsetWidth}px`;
+    indicator.style.transform = `translateX(${btn.offsetLeft}px)`;
+  };
+
+  buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
+      buttons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-
-      const filter = btn.getAttribute("data-filter");
-      cards.forEach(card => {
-        if (filter === "all") {
-          card.style.display = "flex";
-        } else {
-          const categories = card.getAttribute("data-category").split(" ");
-          if (categories.includes(filter)) {
-            card.style.display = "flex";
-          } else {
-            card.style.display = "none";
-          }
+      move(btn);
+      const f = btn.dataset.filter;
+      document.querySelectorAll("#projectsGrid .card").forEach((card) => {
+        const show = f === "all" || card.dataset.category.split(" ").includes(f);
+        card.classList.toggle("is-hidden", !show);
+        if (show) {
+          card.animate(
+            [{ opacity: 0, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
+            { duration: 450, easing: "cubic-bezier(0.22, 1, 0.36, 1)" }
+          );
         }
       });
     });
   });
-});
 
-// Switch Main Image in Modal Gallery
-function changeModalImg(src, thumbElem) {
-  const mainImg = document.getElementById("modalMainImg");
-  if (mainImg) {
-    mainImg.src = src;
-  }
-  document.querySelectorAll(".modal-thumb").forEach(t => t.classList.remove("active"));
-  if (thumbElem) {
-    thumbElem.classList.add("active");
-  }
+  const sync = () => move(tabs.querySelector(".tab.active"));
+  requestAnimationFrame(sync);
+  window.addEventListener("resize", sync);
+  document.fonts && document.fonts.ready.then(sync);
 }
 
-// Modal Logic
-function openModal(projectId) {
-  const data = projectsData[projectId];
-  if (!data) return;
+/* ---------- Modal + gallery ---------- */
+const modal = document.getElementById("projectModal");
+const modalContent = document.getElementById("modalContent");
+let gallery = { list: [], i: 0 };
+let lastFocus = null;
 
-  const modal = document.getElementById("projectModal");
-  const modalContent = document.getElementById("modalContent");
+function openModal(id) {
+  const p = PROJECTS.find((x) => x.id === id);
+  if (!p) return;
+  lastFocus = document.activeElement;
+  gallery = { list: p.images.map(img), i: 0 };
 
-  const tagsHtml = data.tags.map(t => `<span class="tag" style="font-size: 0.8rem; padding: 4px 10px;">${t}</span>`).join(" ");
-  const featuresHtml = data.features.map(f => `<li style="margin-bottom: 8px; color: #c9d1d9;">${f}</li>`).join("");
-
-  // Gallery HTML
-  let galleryHtml = "";
-  if (data.images && data.images.length > 0) {
-    const thumbsHtml = data.images.map((img, idx) => `
-      <img src="${img}" class="modal-thumb ${idx === 0 ? 'active' : ''}" onclick="changeModalImg('${img}', this)" alt="Screenshot ${idx + 1}" loading="lazy">
-    `).join("");
-
-    galleryHtml = `
-      <div class="modal-gallery">
-        <div class="modal-main-img-wrap">
-          <img id="modalMainImg" src="${data.images[0]}" class="modal-main-img" alt="${data.title}">
-        </div>
-        <div class="modal-thumbs">
-          ${thumbsHtml}
-        </div>
-      </div>
-    `;
-  }
+  const commented = escapeHtml(p.code)
+    .split("\n")
+    .map((line) => (/^\s*(#|\/\/)/.test(line) ? `<span class="tok-c">${line}</span>` : line))
+    .join("\n");
 
   modalContent.innerHTML = `
-    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">
-      ${data.badge}
-    </div>
-    <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">${data.title}</h2>
-    
-    ${galleryHtml}
+    <span class="m-kicker">${p.kicker}</span>
+    <h2 class="m-title">${p.title}</h2>
+    <p class="m-desc">${p.desc}</p>
 
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
-      ${tagsHtml}
+    <div class="gallery">
+      <div class="g-stage" id="gStage">
+        <img id="gImg" src="${gallery.list[0]}" alt="${escapeHtml(p.title)} — скриншот 1">
+        ${gallery.list.length > 1 ? `
+          <button class="g-nav g-prev" data-g="-1" aria-label="Предыдущий скриншот">‹</button>
+          <button class="g-nav g-next" data-g="1" aria-label="Следующий скриншот">›</button>` : ""}
+        <span class="g-count" id="gCount">1 / ${gallery.list.length}</span>
+      </div>
+      ${gallery.list.length > 1 ? `
+      <div class="g-thumbs">
+        ${gallery.list.map((src, i) => `<button class="g-thumb ${i === 0 ? "active" : ""}" data-gi="${i}" aria-label="Скриншот ${i + 1}"><img src="${src}" alt="" loading="lazy"></button>`).join("")}
+      </div>` : ""}
     </div>
-    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-      ${data.desc}
-    </p>
-    <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">
-      Ключевые инженерные решения:
-    </h4>
-    <ul style="padding-left: 20px; margin-bottom: 24px;">
-      ${featuresHtml}
-    </ul>
-    <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">
-      Архитектурный фрагмент:
-    </h4>
-    <pre style="background: #090c10; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.85rem; color: #00f0ff; margin-bottom: 28px;"><code>${escapeHtml(data.codeSnippet)}</code></pre>
-    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <a href="https://github.com/phant0mcyber01-hud" target="_blank" class="btn btn-primary">
-        Смотреть на GitHub →
-      </a>
-      <a href="https://t.me/whoami_user01" target="_blank" class="btn btn-outline">
-        Обсудить архитектуру проекта
-      </a>
+
+    <div class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+
+    <div class="m-grid">
+      <div class="m-block">
+        <h4>Ключевые инженерные решения</h4>
+        <ul class="m-list">${p.features.map((f) => `<li>${f}</li>`).join("")}</ul>
+      </div>
+      <div class="m-block">
+        <h4>Фрагмент архитектуры</h4>
+        <div class="code">
+          <div class="code-bar"><span>${p.id}.snippet</span><button class="copy-btn" id="copyBtn">copy</button></div>
+          <pre><code>${commented}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-actions">
+      <a href="${p.repo}" target="_blank" rel="noopener" class="btn btn-light">${ghIcon} Код на GitHub</a>
+      <a href="https://t.me/whoami_user01" target="_blank" rel="noopener" class="btn btn-ghost">Обсудить проект</a>
     </div>
   `;
 
+  modalContent.querySelectorAll("[data-g]").forEach((b) => b.addEventListener("click", () => step(+b.dataset.g)));
+  modalContent.querySelectorAll("[data-gi]").forEach((b) => b.addEventListener("click", () => show(+b.dataset.gi)));
+  document.getElementById("copyBtn").addEventListener("click", (e) => {
+    navigator.clipboard && navigator.clipboard.writeText(p.code).then(() => {
+      e.target.textContent = "copied ✓";
+      setTimeout(() => (e.target.textContent = "copy"), 1500);
+    });
+  });
+  initSwipe(document.getElementById("gStage"));
+
   modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  modal.querySelector(".modal-panel").scrollTop = 0;
+  setTimeout(() => modal.querySelector(".modal-close").focus({ preventScroll: true }), 50);
+}
+
+function show(i) {
+  const n = gallery.list.length;
+  gallery.i = (i + n) % n;
+  const el = document.getElementById("gImg");
+  el.classList.add("fade");
+  setTimeout(() => {
+    el.src = gallery.list[gallery.i];
+    el.onload = () => el.classList.remove("fade");
+    if (el.complete) el.classList.remove("fade");
+  }, 150);
+  document.getElementById("gCount").textContent = `${gallery.i + 1} / ${n}`;
+  modalContent.querySelectorAll(".g-thumb").forEach((t, k) => {
+    t.classList.toggle("active", k === gallery.i);
+    if (k === gallery.i) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+  });
+}
+const step = (d) => show(gallery.i + d);
+
+function initSwipe(el) {
+  if (!el) return;
+  let x0 = null;
+  el.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+  el.addEventListener("touchend", (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+    x0 = null;
+  });
 }
 
 function closeModal() {
-  const modal = document.getElementById("projectModal");
   modal.classList.remove("open");
-  document.body.style.overflow = "auto";
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  lastFocus && lastFocus.focus && lastFocus.focus({ preventScroll: true });
 }
 
-// Close on ESC
+modal.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) closeModal(); });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
+  if (!modal.classList.contains("open")) return;
+  if (e.key === "Escape") closeModal();
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
 });
 
-function escapeHtml(string) {
-  const entityMap = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': '&quot;',
-    "'": '&#39;',
-    "/": '&#x2F;'
-  };
-  return String(string).replace(/[&<>"'\/]/g, s => entityMap[s]);
+/* ---------- Nav ---------- */
+function initNav() {
+  const nav = document.getElementById("nav");
+  const burger = document.getElementById("burger");
+  const links = document.getElementById("navLinks");
+
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  burger.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    burger.setAttribute("aria-expanded", String(open));
+  });
+  links.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      links.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    })
+  );
 }
+
+/* ---------- Reveal on scroll ---------- */
+function initReveal() {
+  const els = document.querySelectorAll(".reveal, .showcase");
+  if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        en.target.classList.add("in");
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+  els.forEach((el, i) => {
+    if (el.closest(".hero-inner")) el.style.transitionDelay = `${i * 80}ms`;
+    io.observe(el);
+  });
+}
+
+/* ---------- Spotlight follow ---------- */
+function initSpotlight() {
+  if (window.matchMedia("(hover: none)").matches) return;
+  document.addEventListener("pointermove", (e) => {
+    const el = e.target.closest(".spot");
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }, { passive: true });
+}
+
+/* ---------- Animated counters ---------- */
+function initCounters() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const nums = document.querySelectorAll("[data-count]");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || "";
+      const t0 = performance.now();
+      const dur = 1400;
+      const tick = (t) => {
+        const k = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(target * eased).toLocaleString("ru-RU") + suffix;
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  nums.forEach((n) => io.observe(n));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProjects();
+  initTabs();
+  initNav();
+  initReveal();
+  initSpotlight();
+  initCounters();
+});
 
 window.openModal = openModal;
 window.closeModal = closeModal;
-window.changeModalImg = changeModalImg;
